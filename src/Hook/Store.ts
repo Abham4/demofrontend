@@ -7,7 +7,8 @@ interface Num {
     decreaseNumber: (type: any) => void;
     setUser: (type:any) => void;
     user: user;
-   // Logout: () => void;
+    setLang: (type:any) => void;
+    lang: string;
 }
  let us:user;
 const useStore = create(persist<Num>((set) => ({
@@ -16,10 +17,8 @@ const useStore = create(persist<Num>((set) => ({
     decreaseNumber: () => set((state) => ({number: state.number - 1})),
     user:us,
     setUser: (user) => set((state) => ({...state, user})),
-    // Logout: () => {
-    //     set(() => ({ user: null}));
-    //     localStorage.removeItem("number")
-    //   },
+    lang: "",
+    setLang: (lang) => set((state) => ({...state,lang}))
 }),
 {
     name:"number"

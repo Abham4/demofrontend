@@ -1,44 +1,60 @@
 import { ToastContainer } from "react-toastify";
 import "./navbar.css";
 import authService from "../../../service/auth.service";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useStore from "../../../Hook/Store";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const setUser = useStore((state) => state.setUser);
+  const lang = useStore((state) => state.lang);
+  const setLang = useStore((state) => state.setLang);
   const user = useStore((state) => state.user);
   const logout = () => {
     setUser(null);
     authService.logout();
     navigate("/Login");
   };
-  console.log(user?.Username);
-
+  useEffect(() => {
+    i18n.changeLanguage(lang);
+  }, [lang, i18n]);
   return (
     <>
       <ToastContainer />
       <div className="Navbar">
         <div className="leftside">
           <div className="leftLeft">
-            <h1>Student</h1>
+            <h1>{t("Student")}</h1>
           </div>
           {user === null || user === undefined ? (
             <></>
           ) : (
             <div className="leftRight">
               <div>
-                <a href="/Home">Home</a>
+                <Link to="/">Home</Link>
               </div>
               <div>
-                <a href="/CreateStudent">Create Student</a>
+                {/* <a href="/CreateStudent">Create Student</a> */}
+                <Link to="/CreateStudent">Creaate Student</Link>
               </div>
               <div>
-                <a href="/List">List</a>
+                <Link to="/List">List</Link>
               </div>
-              <div><a href="/CreateUser">User</a></div>
+              <Link to="/CreateUser">User</Link>
               <div>
                 <button onClick={() => logout()}>Logout</button>
               </div>
+              <select
+                name="lang"
+                defaultValue={lang}
+                 onChange={(e) => setLang(e.target.value)}
+                 className="fixed top-0 left-0"
+              >
+                <option value="en">EN</option>
+                <option value="am">AM</option>
+              </select>
             </div>
           )}
         </div>

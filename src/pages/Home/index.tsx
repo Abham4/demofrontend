@@ -1,29 +1,23 @@
 import React, { useEffect, useState } from "react";
 import useStore from "../../Hook/Store";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Home = () => {
   const num = useStore((state) => state.number);
   const increaseNum = useStore((state) => state.increaseNumber);
   const decreaseNum = useStore((state) => state.decreaseNumber);
   const [count, setCount] = useState(0);
   const [calculation, setCalculation] = useState(0);
+  const [name, setName] = useState("")
   useEffect(() => {
     setTimeout(() => {
       setCalculation(() => calculation + 1);
-    }, 1000);
-  },[]);
-  const show = () => {
-    console.log("hjk");
-    
-    toast.success("abche",{
-      position:toast.POSITION.TOP_RIGHT
-    })
-  }
+    });
+  }, []);
 
   return (
     <>
-      <div className="mt-20 ml-20">
+      <div className="mt-32 ml-20">
         <button onClick={decreaseNum}>-</button>
         {num}
         <button onClick={increaseNum}>+</button>

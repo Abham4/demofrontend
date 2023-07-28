@@ -101,6 +101,8 @@ export const GetStudentData = (): IGetStudentAData => {
   const navigate = useNavigate();
   useEffect(() => {
     getServices.getMember().then((res) => {
+      console.log(res);
+      
       setStudent(res);
       setLoading(true);
       console.log(res);

@@ -29,14 +29,14 @@ const Login = () => {
               <div className="rounded-md shadow-sm -space-y-px">
                 <div>
                   <label htmlFor="email-address" className="sr-only">
-                    User Name
+                    Email Address
                   </label>
                   <input
                     id="email-address"
                     autoComplete="email"
                     required
                     className="appearance-none rounded-none relative block w-full px-5  py-3 my-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    placeholder="User Name"
+                    placeholder="Email Address"
                     {...register("email")}
                   />
                 </div>

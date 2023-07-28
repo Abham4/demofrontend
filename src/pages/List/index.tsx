@@ -83,7 +83,7 @@ export default function List() {
 
   return (
     <>
-      <h1 className="flex justify-center">Student List</h1>
+      <h1 className="flex justify-center mt-24">Student List</h1>
       {loading ? (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">

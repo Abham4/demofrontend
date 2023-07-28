@@ -8,6 +8,6 @@ export interface student {
     createdDate: string;
 }
 export interface user {
-    email: string;
+    Email: string;
     Username: string;
 }
